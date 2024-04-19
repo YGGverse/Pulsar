@@ -7,12 +7,12 @@ Simple RSS feed converter to static Gemtext format, useful for news portals or l
 ## Usage
 
 1. `git clone https://github.com/YGGverse/Pulsar.git`
-2. `cp example/config.json config.json` - setup your feeds there!
-3. `php src/crawler.php` - crontab schedule
+2. `cp example/config.json config.json` - setup your feeds
+3. `php src/crawler.php` - create crontab schedule
 
 ## Config
 
-Configuration file supports multiple feed channels with custom configurations:
+Configuration file supports multiple feed channels with custom settings:
 
 * `source` - string, filepath or URL to the valid RSS feed
 * `target` - string, relative or absolute path to Gemtext dumps
@@ -27,7 +27,3 @@ Configuration file supports multiple feed channels with custom configurations:
     * `{description}` - item description
 
 Resulting files could be generated to the any folder for personal reading on localhost, or shared with others using [gmid](https://github.com/omar-polo/gmid), [twins](https://code.rocket9labs.com/tslocum/twins) or any other [Gemini server](https://github.com/kr1sp1n/awesome-gemini#servers).
-
-## Instances
-
-Coming soon!
