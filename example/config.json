@@ -1,0 +1,23 @@
+{
+    "feed":
+    [
+        {
+            "source":"https://www.omglinux.com/feed",
+            "target":"data/omglinux.com/feed.gmi",
+            "item":
+            {
+                "template":"=> {link} {title}{nl}{nl}{description}",
+                "limit":20
+            }
+        },
+        {
+            "source":"https://omgubuntu.co.uk/feed",
+            "target":"data/omgubuntu.co.uk/feed.gmi",
+            "item":
+            {
+                "template":"=> {link} {title}{nl}{nl}{description}",
+                "limit":20
+            }
+        }
+    ]
+}

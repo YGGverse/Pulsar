@@ -1,0 +1,19 @@
+{
+    "name": "yggverse/pulsar",
+    "description": "RSS Aggregator for Gemini Protocol",
+    "keywords": [ "yggverse", "gemini", "gemini-protocol", "gemtext", "gmi", "rss", "feed", "converter", "aggregator" ],
+    "homepage": "https://github.com/yggverse/pulsar",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yggverse\\Pulsar\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "YGGverse"
+        }
+    ],
+    "require": {}
+}
