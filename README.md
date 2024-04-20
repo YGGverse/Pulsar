@@ -7,6 +7,7 @@ Simple RSS feed converter to static Gemtext format, useful for news portals or l
 ## Example
 
 * `gemini://[301:23b4:991a:634d::feed]` - [Yggdrasil](https://github.com/yggdrasil-network/yggdrasil-go) instance by YGGverse
+  * `gemini://pulsar.yggverse.dedyn.io` - Internet alias
 
 ## Usage
 
