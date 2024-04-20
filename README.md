@@ -17,7 +17,7 @@ Configuration file supports multiple feed channels with custom settings:
 * `source` - string, filepath or URL to the valid RSS feed
 * `target` - string, relative or absolute path to Gemtext dumps
 * `item`
-  * `limit` - integer, how many items to display
+  * `limit` - integer, how many items to display on page generated
   * `template` - string, custom pattern for feed item, that supports following macros
     * `{nl}` - new line separator
     * `{link}` - item link
@@ -26,7 +26,7 @@ Configuration file supports multiple feed channels with custom settings:
     * `{title}` - item title
     * `{description}` - item description
 
-Resulting files could be generated to the any folder for personal reading on localhost, or shared with others using [gmid](https://github.com/omar-polo/gmid), [twins](https://code.rocket9labs.com/tslocum/twins) or any other [Gemini server](https://github.com/kr1sp1n/awesome-gemini#servers).
+Resulting files could be placed to any local folder (for personal reading) or shared with others (using [gmid](https://github.com/omar-polo/gmid), [twins](https://code.rocket9labs.com/tslocum/twins) or any other [server](https://github.com/kr1sp1n/awesome-gemini#servers))
 
 ## Server
 
