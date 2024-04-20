@@ -38,7 +38,7 @@ It's especially useful for [Yggdrasil](https://github.com/yggdrasil-network/yggd
 
 * `cd Pulsar` - navigate to the project folder
 * `composer update` - download server dependencies with Composer
-* `mkdir server/127.0.0.1` - init server location (you can define any other destination, but `server` one is just git ignored)
+* `mkdir server/127.0.0.1` - init server location (you can define any other destination, `server` just git ignored)
 * `cp example/host.json server/127.0.0.1/host.json` - copy configuration example to the destination folder
 * `cd server/127.0.0.1` - navigate to server folder created and generate new self-signed certificate
 
