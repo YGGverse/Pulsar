@@ -77,10 +77,13 @@ if (!file_exists(PULSAR_SERVER_KEY))
 // Init data directory
 define(
     'PULSAR_SERVER_DATA_DIRECTORY',
-    str_starts_with(
-        $config->data->directory,
+    rtrim(
+        str_starts_with(
+            $config->data->directory,
+            DIRECTORY_SEPARATOR
+        ) ? $config->data->directory : PULSAR_SERVER_DIRECTORY . $config->data->directory,
         DIRECTORY_SEPARATOR
-    ) ? $config->data->directory : PULSAR_SERVER_DIRECTORY . $config->data->directory
+    ) . DIRECTORY_SEPARATOR
 );
 
 if (!is_dir(PULSAR_SERVER_DATA_DIRECTORY))
