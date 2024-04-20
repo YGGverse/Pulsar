@@ -62,11 +62,9 @@ Launch Pulsar server as systemd service
 
 Following example means you have Pulsar installed in home directory of `pulsar` user (`useradd -m pulsar`)
 
-#### Unit
+```
+#/etc/systemd/system/pulsar.service
 
-* `sudo nano /etc/systemd/system/pulsar.service` - create unit
-
-``` /etc/systemd/system/pulsar.service
 [Unit]
 After=network.target
 
@@ -81,8 +79,6 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
-
-#### Operations
 
 * `sudo systemctl daemon-reload` - reload systemd configuration
 * `sudo systemctl enable pulsar` - enable Pulsar service on system startup
