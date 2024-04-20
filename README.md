@@ -58,9 +58,11 @@ Open `gemini://127.0.0.1` in [Gemini browser](https://github.com/kr1sp1n/awesome
 
 ### Autostart
 
-Launch Pulsar server as `systemd` service
+Launch server as `systemd` service
 
 Following example means you have Pulsar installed in home directory of `pulsar` user (`useradd -m pulsar`)
+
+`sudo nano /etc/systemd/system/pulsar.service` - create new unit file:
 
 ``` /etc/systemd/system/pulsar.service
 [Unit]
