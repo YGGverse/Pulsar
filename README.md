@@ -62,7 +62,7 @@ Launch server as `systemd` service
 
 Following example means you have Pulsar installed in home directory of `pulsar` user (`useradd -m pulsar`)
 
-`sudo nano /etc/systemd/system/pulsar.service` - create new unit file:
+* `sudo nano /etc/systemd/system/pulsar.service` - create new unit file
 
 ``` /etc/systemd/system/pulsar.service
 [Unit]
