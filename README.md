@@ -52,6 +52,38 @@ openssl req -x509 -newkey rsa:4096 -keyout key.rsa -out cert.pem -days 365 -node
 
 ### Launch
 
-* `php src/server.php server/127.0.0.1` - supported relative or absolute paths for systemd service
+* `php src/server.php server/127.0.0.1` - supported relative or absolute paths (for systemd service)
 
 Open `gemini://127.0.0.1` in [Gemini browser](https://github.com/kr1sp1n/awesome-gemini#clients)!
+
+### Service
+
+Launch Pulsar server as systemd service
+
+Following example means you have Pulsar installed in home directory of `pulsar` user (`useradd -m pulsar`)
+
+#### Unit
+
+* `sudo nano /etc/systemd/system/pulsar.service` - create unit
+
+``` /etc/systemd/system/pulsar.service
+[Unit]
+After=network.target
+
+[Service]
+Type=simple
+User=pulsar
+ExecStart=/usr/bin/php /home/pulsar/Pulsar/src/server.php /home/pulsar/Pulsar/server/127.0.0.1
+StandardOutput=file:/home/pulsar/Pulsar/server/127.0.0.1/debug.log
+StandardError=file:/home/pulsar/Pulsar/server/127.0.0.1/error.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### Operations
+
+* `sudo systemctl daemon-reload` - reload systemd configuration
+* `sudo systemctl enable pulsar` - enable Pulsar service on system startup
+* `sudo systemctl start pulsar` - start Pulsar server
