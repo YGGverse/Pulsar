@@ -4,6 +4,10 @@ RSS Aggregator for [Gemini Protocol](https://geminiprotocol.net)
 
 Simple RSS feed converter to static Gemtext format, useful for news portals or localhost reading
 
+## Example
+
+* `gemini://[301:23b4:991a:634d::feed]` - [Yggdrasil](https://github.com/yggdrasil-network/yggdrasil-go) instance by YGGverse
+
 ## Usage
 
 1. `git clone https://github.com/YGGverse/Pulsar.git`
@@ -26,7 +30,7 @@ Configuration file supports multiple feed channels with custom settings:
     * `{title}` - item title
     * `{description}` - item description
 
-Resulting files could be placed to any local folder (for personal reading) or shared with others (using [gmid](https://github.com/omar-polo/gmid), [twins](https://code.rocket9labs.com/tslocum/twins) or any other [server](https://github.com/kr1sp1n/awesome-gemini#servers))
+Resulting files could be placed to any local folder (for personal reading) or shared with others (using [gmid](https://github.com/omar-polo/gmid), [twins](https://code.rocket9labs.com/tslocum/twins) or any other [server](https://github.com/kr1sp1n/awesome-gemini#servers) for `gemtext` statics)
 
 ## Server
 
