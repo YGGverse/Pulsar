@@ -1,0 +1,12 @@
+{
+    "host":"127.0.0.1",
+    "port":1965,
+    "cert":"cert.pem",
+    "key":"key.rsa",
+    "data":
+    {
+        "directory":"public",
+        "index":"index.gmi",
+        "listing":true
+    }
+}

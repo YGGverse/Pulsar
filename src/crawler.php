@@ -15,7 +15,7 @@ if (false === sem_acquire($semaphore, true))
 // Init config
 $config = json_decode(
     file_get_contents(
-        __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config.json'
+        __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'crawler.json'
     )
 );
 

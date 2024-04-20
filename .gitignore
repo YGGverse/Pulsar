@@ -1,4 +1,4 @@
 /composer.lock
-/config.json
-/data/
+/crawler.json
+/server/
 /vendor/

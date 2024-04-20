@@ -3,7 +3,7 @@
     [
         {
             "source":"https://www.omglinux.com/feed",
-            "target":"data/omglinux.com/feed.gmi",
+            "target":"server/127.0.0.1/public/omglinux/feed.gmi",
             "item":
             {
                 "template":"=> {link} {title}{nl}{nl}{description}",
@@ -12,7 +12,7 @@
         },
         {
             "source":"https://omgubuntu.co.uk/feed",
-            "target":"data/omgubuntu.co.uk/feed.gmi",
+            "target":"server/127.0.0.1/public/omgubuntu/feed.gmi",
             "item":
             {
                 "template":"=> {link} {title}{nl}{nl}{description}",
