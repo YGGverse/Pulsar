@@ -56,15 +56,13 @@ openssl req -x509 -newkey rsa:4096 -keyout key.rsa -out cert.pem -days 365 -node
 
 Open `gemini://127.0.0.1` in [Gemini browser](https://github.com/kr1sp1n/awesome-gemini#clients)!
 
-### Service
+### Autostart
 
-Launch Pulsar server as systemd service
+Launch Pulsar server as `systemd` service
 
 Following example means you have Pulsar installed in home directory of `pulsar` user (`useradd -m pulsar`)
 
-```
-#/etc/systemd/system/pulsar.service
-
+``` /etc/systemd/system/pulsar.service
 [Unit]
 After=network.target
 
