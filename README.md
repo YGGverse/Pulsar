@@ -2,7 +2,7 @@
 
 RSS Aggregator for [Gemini Protocol](https://geminiprotocol.net)
 
-Simple RSS feed converter to static Gemtext format, useful for news portals or localhost usage.
+Simple RSS feed converter to static Gemtext format, useful for news portals or localhost reading
 
 ## Usage
 
