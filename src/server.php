@@ -17,11 +17,14 @@ if (empty($argv[1]))
 // Init server path
 define(
     'PULSAR_SERVER_DIRECTORY',
-    str_starts_with($argv[1], DIRECTORY_SEPARATOR) ? $argv[1] :
-    realpath(
-        __DIR__  .
-        DIRECTORY_SEPARATOR . '..' .
-        DIRECTORY_SEPARATOR . $argv[1]
+    rtrim(
+        str_starts_with($argv[1], DIRECTORY_SEPARATOR) ? $argv[1] :
+        realpath(
+            __DIR__  .
+            DIRECTORY_SEPARATOR . '..' .
+            DIRECTORY_SEPARATOR . $argv[1]
+        ),
+        DIRECTORY_SEPARATOR
     ) . DIRECTORY_SEPARATOR
 );
 
