@@ -120,7 +120,9 @@ $server->setHandler(
             ],
             DIRECTORY_SEPARATOR,
             trim(
-                $request->getPath()
+                str_replace(
+                    '\\', '/', $request->getPath()
+                )
             )
         );
 
