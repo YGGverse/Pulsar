@@ -118,8 +118,11 @@ $server->setHandler(
                 '/[\/]+\//',
             ],
             '/',
-            trim(
-                $request->getPath()
+            ltrim(
+                trim(
+                    $request->getPath()
+                ),
+                '.'
             )
         );
 
