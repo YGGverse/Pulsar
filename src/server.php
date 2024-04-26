@@ -112,13 +112,13 @@ $server->setHandler(
         $response = new \Yggverse\TitanII\Response;
 
         // Filter path request
-        $path = trim(
-            preg_replace(
-                [
-                    '/[\.]+\//',
-                    '/[\/]+\//',
-                ],
-                '/',
+        $path = preg_replace(
+            [
+                '/[\.]+\//',
+                '/[\/]+\//',
+            ],
+            '/',
+            trim(
                 $request->getPath()
             )
         );
