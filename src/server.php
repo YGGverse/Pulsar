@@ -118,7 +118,7 @@ $server->setHandler(
                 '/[\.]+\//',     // relative directory paths
                 '/[\/]+\//',     // remove extra slashes
             ],
-            '/',
+            DIRECTORY_SEPARATOR,
             trim(
                 $request->getPath()
             )
