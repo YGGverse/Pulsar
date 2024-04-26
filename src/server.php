@@ -114,15 +114,13 @@ $server->setHandler(
         // Filter path request
         $path = preg_replace(
             [
-                '/[\.]+\//',
-                '/[\/]+\//',
+                '/(^|\/)[\.]+/', // hidden items started with dot
+                '/[\.]+\//',     // relative directory paths
+                '/[\/]+\//',     // remove extra slashes
             ],
             '/',
-            ltrim(
-                trim(
-                    $request->getPath()
-                ),
-                '.'
+            trim(
+                $request->getPath()
             )
         );
 
