@@ -115,8 +115,8 @@ $server->setHandler(
         $path = trim(
             preg_replace(
                 [
-                    '/\/[\.]+\//',
-                    '/\/[\/]+\//',
+                    '/[\.]+\//',
+                    '/[\/]+\//',
                 ],
                 '/',
                 $request->getPath()
