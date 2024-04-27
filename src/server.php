@@ -121,7 +121,7 @@ $server->setHandler(
             DIRECTORY_SEPARATOR,
             trim(
                 str_replace(
-                    '\\', '/', $request->getPath()
+                    '\\', '/', filter_var($request->getPath(), FILTER_SANITIZE_URL)
                 )
             )
         );
