@@ -114,15 +114,15 @@ $server->setHandler(
         // Filter path request
         $path = preg_replace(
             [
+                '/\\\/',         // unify separators
                 '/(^|\/)[\.]+/', // hidden items started with dot
                 '/[\.]+\//',     // relative directory paths
                 '/[\/]+\//',     // remove extra slashes
             ],
             DIRECTORY_SEPARATOR,
-            trim(
-                str_replace(
-                    '\\', '/', filter_var($request->getPath(), FILTER_SANITIZE_URL)
-                )
+            filter_var(
+                $request->getPath(),
+                FILTER_SANITIZE_URL
             )
         );
 
