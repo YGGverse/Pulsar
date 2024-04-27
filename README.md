@@ -39,6 +39,8 @@ Pulsar comes with build-in [Titan-II](https://github.com/YGGverse/titan-II) serv
 
 It's especially useful for [Yggdrasil](https://github.com/yggdrasil-network/yggdrasil-go) users, who wish to host their feeds using plain IPv6 `0200::/7` addresses without domain in `CN` record. Build-in server contain this feature implemented from the box.
 
+For NEX protocol users, here is the [next](https://github.com/YGGverse/next) server solution!
+
 ### Setup
 
 * `cd Pulsar` - navigate to the project folder
