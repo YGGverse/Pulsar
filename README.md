@@ -11,7 +11,7 @@ Simple RSS feed converter to static Gemtext format, useful for news portals or l
 ## Usage
 
 1. `git clone https://github.com/YGGverse/Pulsar.git`
-2. `cp example/crawler.json crawler.json` - setup your feed locations
+2. `cp example/config.json config.json` - setup your feed locations
 3. `php src/crawler.php` - grab feeds manually or using crontab
 
 ## Config
