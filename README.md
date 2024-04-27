@@ -6,7 +6,7 @@ Simple RSS feed converter to static Gemtext format, useful for news portals or l
 
 ## Example
 
-* `nex://[301:23b4:991a:634d::feed]` - [Yggdrasil](https://github.com/yggdrasil-network/yggdrasil-go) instance by YGGverse
+* `nex://[301:23b4:991a:634d::feed]/index.gmi` - [Yggdrasil](https://github.com/yggdrasil-network/yggdrasil-go) instance by YGGverse
 
 ## Usage
 
