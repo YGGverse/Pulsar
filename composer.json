@@ -15,7 +15,5 @@
             "name": "YGGverse"
         }
     ],
-    "require": {
-        "yggverse/titan-ii": "^1.0"
-    }
+    "require": {}
 }
