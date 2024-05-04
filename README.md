@@ -20,10 +20,7 @@ RSS Aggregator
 4. `composer update` - install application dependencies
 5. `cp config/example.json name.json` - setup your feed
 
-## Launch
+## Crawl
 
 * `php src/crawler.php config=name.json` - crawl feeds configured by `name.json` - manually or using crontab
-
-### Arguments
-
-* `config` - relative (to `config` folder) or absolute path to configuration file
+  * `config` - relative (to `config` folder) or absolute path to configuration file
