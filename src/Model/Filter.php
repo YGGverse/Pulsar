@@ -28,7 +28,7 @@ class Filter
                     '/[\s]{2,}/',
                 ],
                 ' ',
-                $this->text(
+                self::text(
                     $value
                 )
             )
@@ -39,7 +39,7 @@ class Filter
         string $value
     ): string
     {
-        return $this->text(
+        return self::text(
             $value
         );
     }
