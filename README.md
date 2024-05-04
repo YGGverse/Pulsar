@@ -1,11 +1,11 @@
 # Pulsar
 
-RSS Aggregator for different protocols
+RSS aggregator for different protocols
 
 ## Features
 
-* [x] `src/crawler.php` - scan configured RSS feeds and dump results to SQLite DB (see also [alternative branch](https://github.com/YGGverse/Pulsar/tree/fs))
-* [ ] `src/cleaner.php` - auto clean deprecated records in database
+* [x] `src/crawler.php` - scan configured RSS feeds and dump results to SQLite ([alternative branch](https://github.com/YGGverse/Pulsar/tree/fs))
+* [ ] `src/cleaner.php` - auto clean deprecated records
 * [x] `src/server.php` - server launcher with multiple host support, based on [Ratchet](https://github.com/ratchetphp/Ratchet) asynchronous socket library
   * [x] [NEX Protocol](https://nightfall.city/nps/info/specification.txt)
   * [ ] [Gemini Protocol](https://geminiprotocol.net)
