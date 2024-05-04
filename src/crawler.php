@@ -52,7 +52,7 @@ foreach ($config->crawler->channel as $channel)
     // Check channel enabled
     if (!$channel->enabled)
     {
-        if ($channel->debug->info)
+        if ($config->crawler->debug->info)
         {
             printf(
                 _('[%s] [info] skip disabled channel "%s"') . PHP_EOL,
@@ -67,7 +67,7 @@ foreach ($config->crawler->channel as $channel)
     // Get channel data
     if (!$remoteChannel = simplexml_load_file($channel->source)->channel)
     {
-        if ($channel->debug->warning)
+        if ($config->crawler->debug->warning)
         {
             printf(
                 _('[%s] [warning] channel "%s" not accessible') . PHP_EOL,
@@ -90,7 +90,7 @@ foreach ($config->crawler->channel as $channel)
             isset($remoteChannel->description) ? (string) $remoteChannel->description : null
         );
 
-        if ($channel->debug->info)
+        if ($config->crawler->debug->info)
         {
             printf(
                 _('[%s] [info] channel "%s" registered as #%d') . PHP_EOL,
@@ -118,7 +118,7 @@ foreach ($config->crawler->channel as $channel)
 
                 else
                 {
-                    if ($channel->debug->info)
+                    if ($config->crawler->debug->info)
                     {
                         printf(
                             _('[%s] [info] item link enabled but not defined in channel #%d') . PHP_EOL,
@@ -130,7 +130,7 @@ foreach ($config->crawler->channel as $channel)
 
                 if ($channel->item->link->required && !$link)
                 {
-                    if ($channel->debug->warning)
+                    if ($config->crawler->debug->warning)
                     {
                         printf(
                             _('[%s] [warning] could not get item link for channel #%d') . PHP_EOL,
@@ -155,7 +155,7 @@ foreach ($config->crawler->channel as $channel)
             {
                 $guid = $link;
 
-                if ($channel->debug->warning)
+                if ($config->crawler->debug->warning)
                 {
                     printf(
                         _('[%s] [warning] item guid defined as link in channel #%d') . PHP_EOL,
@@ -177,7 +177,7 @@ foreach ($config->crawler->channel as $channel)
 
                 else
                 {
-                    if ($channel->debug->info)
+                    if ($config->crawler->debug->info)
                     {
                         printf(
                             _('[%s] [info] item title enabled but not defined in channel #%d') . PHP_EOL,
@@ -189,7 +189,7 @@ foreach ($config->crawler->channel as $channel)
 
                 if ($channel->item->title->required && !$title)
                 {
-                    if ($channel->debug->warning)
+                    if ($config->crawler->debug->warning)
                     {
                         printf(
                             _('[%s] [warning] could not get item title in channel #%d') . PHP_EOL,
@@ -214,7 +214,7 @@ foreach ($config->crawler->channel as $channel)
 
                 else
                 {
-                    if ($channel->debug->info)
+                    if ($config->crawler->debug->info)
                     {
                         printf(
                             _('[%s] [info] item description enabled but not defined in channel #%d') . PHP_EOL,
@@ -226,7 +226,7 @@ foreach ($config->crawler->channel as $channel)
 
                 if ($channel->item->description->required && !$description)
                 {
-                    if ($channel->debug->warning)
+                    if ($config->crawler->debug->warning)
                     {
                         printf(
                             _('[%s] [warning] could not get item description in channel #%d') . PHP_EOL,
@@ -252,7 +252,7 @@ foreach ($config->crawler->channel as $channel)
                     }
                 }
 
-                if (!$content && $channel->debug->info)
+                if (!$content && $config->crawler->debug->info)
                 {
                     printf(
                         _('[%s] [info] item content enabled but not defined in channel #%d') . PHP_EOL,
@@ -263,7 +263,7 @@ foreach ($config->crawler->channel as $channel)
 
                 if ($channel->item->content->required && !$content)
                 {
-                    if ($channel->debug->warning)
+                    if ($config->crawler->debug->warning)
                     {
                         printf(
                             _('[%s] [warning] could not get item content in channel #%d') . PHP_EOL,
@@ -290,7 +290,7 @@ foreach ($config->crawler->channel as $channel)
 
                     else
                     {
-                        if ($channel->debug->warning)
+                        if ($config->crawler->debug->warning)
                         {
                             printf(
                                 _('[%s] [info] could not convert item pubDate to pubTime in channel #%d') . PHP_EOL,
@@ -303,7 +303,7 @@ foreach ($config->crawler->channel as $channel)
 
                 else
                 {
-                    if ($channel->debug->info)
+                    if ($config->crawler->debug->info)
                     {
                         printf(
                             _('[%s] [info] item pubDate enabled but not defined in channel #%d') . PHP_EOL,
@@ -315,7 +315,7 @@ foreach ($config->crawler->channel as $channel)
 
                 if ($channel->item->pubDate->required && !$pubTime)
                 {
-                    if ($channel->debug->warning)
+                    if ($config->crawler->debug->warning)
                     {
                         printf(
                             _('[%s] [warning] could not get item pubDate in channel #%d') . PHP_EOL,
@@ -344,7 +344,7 @@ foreach ($config->crawler->channel as $channel)
 
                 if ($channelItemId)
                 {
-                    if ($channel->debug->info)
+                    if ($config->crawler->debug->info)
                     {
                         printf(
                             _('[%s] [info] registered new item #%d for channel #%d') . PHP_EOL,

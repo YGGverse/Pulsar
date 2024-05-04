@@ -38,12 +38,6 @@
                         "enabled":false,
                         "required":false
                     }
-                },
-                "debug":
-                {
-                    "info":true,
-                    "warning":true,
-                    "error":true
                 }
             },
             {
@@ -75,14 +69,14 @@
                         "enabled":false,
                         "required":false
                     }
-                },
-                "debug":
-                {
-                    "info":true,
-                    "warning":true,
-                    "error":true
                 }
             }
-        ]
+        ],
+        "debug":
+        {
+            "info":true,
+            "warning":true,
+            "error":true
+        }
     }
 }
