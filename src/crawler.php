@@ -15,12 +15,14 @@ require_once __DIR__ .
              DIRECTORY_SEPARATOR . 'vendor' .
              DIRECTORY_SEPARATOR . 'autoload.php';
 
-// Init profile argument
-if (empty($argv[1])) throw new \Exception;
+// Init environment
+$environment = new \Yggverse\Pulsar\Model\Environment(
+    $argv
+);
 
 // Init config
 $config = new \Yggverse\Pulsar\Model\Config(
-    $argv[1]
+    $environment->get('config')
 );
 
 $config = $config->get(); // registry only
