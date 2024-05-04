@@ -2,7 +2,7 @@
 
 RSS aggregator for different protocols
 
-See also [alternative branch](https://github.com/YGGverse/Pulsar/tree/fs) to generate static `gemtext` from feeds.
+See also [alternative branch](https://github.com/YGGverse/Pulsar/tree/fs) to generate static `gemtext`
 
 ## Features
 
