@@ -2,9 +2,11 @@
 
 RSS aggregator for different protocols
 
+See also [alternative branch](https://github.com/YGGverse/Pulsar/tree/fs) to generate static `gemtext` from feeds.
+
 ## Features
 
-* [x] `src/crawler.php` - scan configured RSS feeds and dump results to SQLite ([alternative branch](https://github.com/YGGverse/Pulsar/tree/fs))
+* [x] `src/crawler.php` - scan configured RSS feeds and dump results to SQLite
 * [ ] `src/cleaner.php` - auto clean deprecated records
 * [x] `src/server.php` - server launcher for different protocols:
   * [x] [NEX](https://nightfall.city/nex/info/specification.txt) - based on [Ratchet](https://github.com/ratchetphp/Ratchet) `IoServer` asynchronous socket library
