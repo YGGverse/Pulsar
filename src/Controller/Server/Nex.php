@@ -160,7 +160,7 @@ class Nex implements MessageComponentInterface
                 }
 
                 // Get channel items
-                foreach ($this->_database->getChannelItems(0, 20) as $channelItem)
+                foreach ((array) $this->_database->getChannelItems(0, 20) as $channelItem)
                 {
                     $lines[] = sprintf(
                         '=> /%d.gmi %s %s',
@@ -205,7 +205,7 @@ class Nex implements MessageComponentInterface
                 $lines = [];
 
                 // Get channels
-                foreach ($this->_database->getChannels() as $channel)
+                foreach ((array) $this->_database->getChannels() as $channel)
                 {
                     $lines[] = sprintf(
                         '=> /%d/index.gmi %s',
