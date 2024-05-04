@@ -90,7 +90,7 @@ class Nex implements MessageComponentInterface
                     {
                         $lines[] = sprintf(
                             '# %s',
-                            \Yggverse\Pulsar\Model\Filter::title(
+                            \Yggverse\Pulsar\Model\Filter::string(
                                 $channelItem->title
                             )
                         );
@@ -106,14 +106,14 @@ class Nex implements MessageComponentInterface
 
                     if ($channelItem->description)
                     {
-                        $lines[] = \Yggverse\Pulsar\Model\Filter::description(
+                        $lines[] = \Yggverse\Pulsar\Model\Filter::text(
                             $channelItem->description
                         ) . PHP_EOL;
                     }
 
                     if ($channelItem->content)
                     {
-                        $lines[] = \Yggverse\Pulsar\Model\Filter::description(
+                        $lines[] = \Yggverse\Pulsar\Model\Filter::text(
                             $channelItem->content
                         ) . PHP_EOL;
                     }
@@ -147,7 +147,7 @@ class Nex implements MessageComponentInterface
                     {
                         $lines[] = sprintf(
                             '# %s',
-                            \Yggverse\Pulsar\Model\Filter::title(
+                            \Yggverse\Pulsar\Model\Filter::string(
                                 $channel->title
                             )
                         );
@@ -170,7 +170,7 @@ class Nex implements MessageComponentInterface
                             'Y-m-d',
                             $channelItem->pubTime
                         ) : '',
-                        \Yggverse\Pulsar\Model\Filter::title(
+                        \Yggverse\Pulsar\Model\Filter::string(
                             $channelItem->title
                         )
                     );

@@ -17,7 +17,7 @@ class Filter
         );
     }
 
-    public static function title(
+    public static function string(
         string $value
     ): string
     {
@@ -32,15 +32,6 @@ class Filter
                     $value
                 )
             )
-        );
-    }
-
-    public static function description(
-        string $value
-    ): string
-    {
-        return self::text(
-            $value
         );
     }
 
