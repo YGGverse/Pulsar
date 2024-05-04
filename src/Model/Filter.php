@@ -24,7 +24,7 @@ class Filter
         return trim(
             preg_replace(
                 [
-                    '/[\n\r]*/',
+                    '/[\n\r]+/',
                     '/[\s]{2,}/',
                 ],
                 ' ',
