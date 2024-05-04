@@ -16,7 +16,7 @@ require_once __DIR__ .
              DIRECTORY_SEPARATOR . 'autoload.php';
 
 // Init profile argument
-if (empty($argv[1])) throw new \Exception();
+if (empty($argv[1])) throw new \Exception;
 
 // Init config
 $config = json_decode(
@@ -30,7 +30,7 @@ $config = json_decode(
             DIRECTORY_SEPARATOR . 'config'.
             DIRECTORY_SEPARATOR . $argv[1]
     )
-);  if (!$config) throw new \Exception();
+);  if (!$config) throw new \Exception;
 
 // Init database
 $database = new \Yggverse\Pulsar\Model\Database(
