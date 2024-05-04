@@ -5,6 +5,57 @@
         "username":null,
         "password":null
     },
+    "server":
+    {
+        "nps":
+        {
+            "host":"127.0.0.1",
+            "port":1900,
+            "event":
+            {
+                "init":
+                {
+                    "debug":
+                    {
+                        "enabled":true,
+                        "template":"[{time}] [init] NPS server at {host}:{port}"
+                    }
+                },
+                "open":
+                {
+                    "debug":
+                    {
+                        "enabled":true,
+                        "template":"[{time}] [open] connection from {host}#{crid}"
+                    }
+                },
+                "message":
+                {
+                    "debug":
+                    {
+                        "enabled":true,
+                        "template":"[{time}] [message] connection from {host}#{crid} request: {path}"
+                    }
+                },
+                "close":
+                {
+                    "debug":
+                    {
+                        "enabled":true,
+                        "template":"[{time}] [close] connection from {host}#{crid}"
+                    }
+                },
+                "error":
+                {
+                    "debug":
+                    {
+                        "enabled":true,
+                        "template":"[{time}] [error] connection from {host}#{crid} reason: {info}"
+                    }
+                }
+            }
+        }
+    },
     "crawler":
     {
         "channel":
