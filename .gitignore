@@ -1,4 +1,7 @@
 /composer.lock
-/config.json
+
+/config/*
+!/config/example.json
+
 /server/
 /vendor/
