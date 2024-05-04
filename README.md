@@ -14,6 +14,9 @@ RSS Aggregator
 
 ## Usage
 
-1. `git clone https://github.com/YGGverse/Pulsar.git`
-2. `cp config/example.json name.json` - setup your feed
-3. `php src/crawler.php name.json` - crawl feeds configured by `name.json` - manually or using crontab
+1. `apt install git composer php-fpm php-pdo php-mbstring` - install dependencies
+2. `git clone https://github.com/YGGverse/Pulsar.git`
+3. `cd Pulsar` - navigate project folder
+4. `composer update` - grab latest dependencies
+5. `cp config/example.json name.json` - setup your feed
+6. `php src/crawler.php config=name.json` - crawl feeds configured by `name.json` - manually or using crontab
