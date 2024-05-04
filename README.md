@@ -29,7 +29,7 @@ RSS aggregator for different protocols
 
 ## Server
 
-Launch as many servers as wanted by arguments
+Launch as many servers as wanted, for different protocols and configurations (provided as the arguments)
 
 * `php src/server.php protocol=nex config=name.json` - launch `nex` protocol server with `name.json` config
   * `config` - relative (to `config` folder) or absolute path to configuration file
