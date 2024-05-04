@@ -16,7 +16,7 @@ RSS aggregator for different protocols
 
 ## Install
 
-1. `apt install git composer php-fpm php-pdo php-mbstring` - install system dependencies
+1. `apt install git composer php-fpm php-sqlite3 php-pdo php-mbstring` - install system dependencies
 2. `git clone https://github.com/YGGverse/Pulsar.git` - get latest Pulsar version
 3. `cd Pulsar` - navigate project folder
 4. `composer update` - install application dependencies
