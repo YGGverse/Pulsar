@@ -132,9 +132,7 @@ class Nex implements MessageComponentInterface
                 {
                     $lines[] = sprintf(
                         '=> /%s %s',
-                        urlencode(
-                            $channel->alias
-                        ),
+                        $channel->alias,
                         $channel->title
                     );
                 }
@@ -221,9 +219,7 @@ class Nex implements MessageComponentInterface
                 {
                     $lines[] = sprintf(
                         '=> /%s %s',
-                        urlencode(
-                            $channel->alias
-                        ),
+                        $channel->alias,
                         $channel->title
                     );
                 }
