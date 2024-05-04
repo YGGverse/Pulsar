@@ -70,15 +70,142 @@ class Nex implements MessageComponentInterface
         \Ratchet\ConnectionInterface $connection,
         $request
     ) {
-        // Filter request
-        $request = trim(
-            (string) $request
+        // Format request
+        $request = '/' . ltrim(
+            trim($request), '/'
         );
 
-        // Send response
-        $connection->send(
-            'test'
-        );
+        // Route request
+        switch (true)
+        {
+            // Item
+            case (bool) preg_match('/^\/(?<id>\d+)($|\.gmi)$/i', $request, $attribute):
+
+                $lines = [];
+
+                // Get channel item info
+                if ($channelItem = $this->_database->getChannelItem($attribute['id']))
+                {
+                    if ($channelItem->title)
+                    {
+                        $lines[] = sprintf(
+                            '# %s',
+                            \Yggverse\Pulsar\Model\Filter::title(
+                                $channelItem->title
+                            )
+                        );
+                    }
+
+                    if ($channelItem->pubTime)
+                    {
+                        $lines[] = date(
+                            'c',
+                            $channelItem->pubTime
+                        ) . PHP_EOL;
+                    }
+
+                    if ($channelItem->description)
+                    {
+                        $lines[] = \Yggverse\Pulsar\Model\Filter::description(
+                            $channelItem->description
+                        ) . PHP_EOL;
+                    }
+
+                    if ($channelItem->content)
+                    {
+                        $lines[] = \Yggverse\Pulsar\Model\Filter::description(
+                            $channelItem->content
+                        ) . PHP_EOL;
+                    }
+
+                    if ($channelItem->link)
+                    {
+                        $lines[] = sprintf(
+                            '=> %s',
+                            $channelItem->link
+                        ) . PHP_EOL;
+                    }
+                }
+
+                // Build response
+                $response = implode(
+                    PHP_EOL,
+                    $lines
+                );
+
+            break;
+
+            // Chanel
+            case (bool) preg_match('/^\/(?<id>\d+)\/($|index\.gmi)$/i', $request, $attribute):
+
+                $lines = [];
+
+                // Get channel info
+                if ($channel = $this->_database->getChannel($attribute['id']))
+                {
+                    if ($channel->title)
+                    {
+                        $lines[] = sprintf(
+                            '# %s',
+                            \Yggverse\Pulsar\Model\Filter::title(
+                                $channel->title
+                            )
+                        );
+                    }
+
+                    if ($channel->description)
+                    {
+                        $lines[] = $channel->description . PHP_EOL;
+                    }
+                }
+
+                // Get channel items
+                foreach ($this->_database->getChannelItems(0, 20) as $channelItem)
+                {
+                    $lines[] = sprintf(
+                        '=> /%d.gmi %s %s',
+                        $channelItem->id,
+                        $channelItem->pubTime ?
+                        date(
+                            'Y-m-d',
+                            $channelItem->pubTime
+                        ) : '',
+                        \Yggverse\Pulsar\Model\Filter::title(
+                            $channelItem->title
+                        )
+                    );
+                }
+
+                // Build response
+                $response = implode(
+                    PHP_EOL,
+                    $lines
+                );
+
+            break;
+
+            // Main
+            // Not found
+            default:
+
+                $lines = [];
+
+                // Get channels
+                foreach ($this->_database->getChannels() as $channel)
+                {
+                    $lines[] = sprintf(
+                        '=> /%d/index.gmi %s',
+                        $channel->id,
+                        $channel->title
+                    );
+                }
+
+                // Build response
+                $response = implode(
+                    PHP_EOL,
+                    $lines
+                );
+        }
 
         // Debug message event on enabled
         if ($this->_config->event->message->debug->enabled)
@@ -102,6 +229,11 @@ class Nex implements MessageComponentInterface
                 ) . PHP_EOL
             );
         }
+
+        // Send response
+        $connection->send(
+            $response
+        );
 
         // Disconnect
         $connection->close();

@@ -70,6 +70,38 @@ class Database
         ');
     }
 
+    public function getChannel(
+        int $id
+    ): ?object
+    {
+        $query = $this->_database->prepare(
+            'SELECT * FROM `channel` WHERE `id` = ?'
+        );
+
+        $query->execute([$id]);
+
+        if ($result = $query->fetch())
+        {
+            return $result;
+        }
+
+        return null;
+    }
+
+    public function getChannels(): ?array
+    {
+        $query = $this->_database->query(
+            'SELECT * FROM `channel`'
+        );
+
+        if ($result = $query->fetchAll())
+        {
+            return $result;
+        }
+
+        return null;
+    }
+
     public function getChannelIdBySource(
         string $source
     ): ?int
@@ -118,6 +150,45 @@ class Database
         if ($id = $this->_database->lastInsertId())
         {
             return (int) $id;
+        }
+
+        return null;
+    }
+
+    public function getChannelItem(
+        int $id
+    ): ?object
+    {
+        $query = $this->_database->prepare(
+            'SELECT * FROM `channelItem` WHERE `id` = ? LIMIT 1'
+        );
+
+        $query->execute([$id]);
+
+        if ($result = $query->fetch())
+        {
+            return $result;
+        }
+
+        return null;
+    }
+
+    public function getChannelItems(
+        int $start = 0,
+        int $limit = 20
+    ): ?array
+    {
+        $query = $this->_database->query(
+            sprintf(
+                'SELECT * FROM `channelItem` ORDER BY `time` DESC LIMIT %d,%d',
+                $start,
+                $limit
+            )
+        );
+
+        if ($result = $query->fetchAll())
+        {
+            return $result;
         }
 
         return null;
