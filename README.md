@@ -22,7 +22,7 @@ See also [alternative branch](https://github.com/YGGverse/Pulsar/tree/fs) to gen
 2. `git clone https://github.com/YGGverse/Pulsar.git` - get latest Pulsar version
 3. `cd Pulsar` - navigate project folder
 4. `composer update` - install application dependencies
-5. `cp config/example.json name.json` - setup your feed
+5. `cp config/example.json config/name.json` - setup your feed
 
 ## Crawler
 
