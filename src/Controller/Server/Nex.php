@@ -174,6 +174,20 @@ class Nex implements MessageComponentInterface
                             $channelItem->title
                         )
                     );
+
+                    if ($channelItem->description)
+                    {
+                        $lines[] = \Yggverse\Pulsar\Model\Filter::text(
+                            $channelItem->description
+                        ) . PHP_EOL;
+                    }
+
+                    if ($channelItem->content)
+                    {
+                        $lines[] = \Yggverse\Pulsar\Model\Filter::text(
+                            $channelItem->content
+                        ) . PHP_EOL;
+                    }
                 }
 
                 // Build response
