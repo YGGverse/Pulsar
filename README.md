@@ -37,3 +37,34 @@ Launch as many servers as wanted, for different protocols and configurations (pr
   * `config` - relative (`config` folder) or absolute path to configuration file
   * `protocol` - server protocol, supported options:
     * `nex` - [NEX Protocol](https://nightfall.city/nex/info/specification.txt)
+
+### Autostart
+
+#### systemd
+
+Launch server as the systemd service
+
+Following example mean application installed into the home directory of `pulsar` user (`useradd -m pulsar`)
+
+``` pulsar.service
+# /etc/systemd/system/pulsar.service
+
+[Unit]
+After=network.target
+
+[Service]
+Type=simple
+User=pulsar
+Group=pulsar
+ExecStart=/usr/bin/php /home/pulsar/Pulsar/src/server.php protocol=nex config=name.json
+StandardOutput=file:/home/pulsar/debug.log
+StandardError=file:/home/pulsar/error.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+* `sudo systemctl daemon-reload` - reload systemd configuration
+* `sudo systemctl enable pulsar` - enable service on system startup
+* `sudo systemctl start pulsar` - start server
