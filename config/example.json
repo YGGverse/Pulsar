@@ -63,6 +63,7 @@
             {
                 "source":"https://www.omglinux.com/feed",
                 "alias":"omglinux.gmi",
+                "order":1,
                 "enabled":true,
                 "item":
                 {
@@ -95,6 +96,7 @@
             {
                 "source":"https://omgubuntu.co.uk/feed",
                 "alias":"omgubuntu.gmi",
+                "order":2,
                 "enabled":false,
                 "item":
                 {

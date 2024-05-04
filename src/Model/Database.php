@@ -13,6 +13,7 @@ class Database
         ?string $username = null,
         ?string $password = null
     ) {
+        // Init connection
         $this->_database = new \PDO(
             sprintf(
                 'sqlite:%s',
@@ -40,11 +41,13 @@ class Database
             \PDO::FETCH_OBJ
         );
 
+        // Init structure
         $this->_database->query('
             CREATE TABLE IF NOT EXISTS "channel"
             (
                 "id"          INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                 "time"        INTEGER NOT NULL,
+                "order"       INTEGER NOT NULL,
                 "alias"       VARCHAR NOT NULL,
                 "source"      TEXT NOT NULL,
                 "link"        TEXT,
@@ -90,7 +93,7 @@ class Database
     public function getChannels(): ?array
     {
         $query = $this->_database->query(
-            'SELECT * FROM `channel`'
+            'SELECT * FROM `channel` ORDER BY `order` ASC, `title` ASC, `id` ASC'
         );
 
         if ($result = $query->fetchAll())
@@ -142,17 +145,18 @@ class Database
     }
 
     public function addChannel(
-        string $alias,
-        string $source,
-        ?string $link,
-        ?string $title,
-        ?string $description,
-        ?int $time = null
+        string  $alias,
+        string  $source,
+        ?string $link        = null,
+        ?string $title       = null,
+        ?string $description = null,
+        ?int    $time        = null,
+        ?int    $order       = null
     ): ?int
     {
         $query = $this->_database->prepare(
-            'INSERT INTO `channel` (`alias`, `source`, `link`, `title`, `description`, `time`)
-                            VALUES (:alias,  :source,  :link,  :title,  :description,  :time)'
+            'INSERT INTO `channel` (`alias`, `source`, `link`, `title`, `description`, `time`, `order`)
+                            VALUES (:alias,  :source,  :link,  :title,  :description,  :time,  :order)'
         );
 
         $query->execute(
@@ -162,7 +166,8 @@ class Database
                 ':link'        => $link,
                 ':title'       => $title,
                 ':description' => $description,
-                ':time'        => $time ? $time : time()
+                ':time'        => $time  ? $time  : time(),
+                ':order'       => $order ? $order : 0
             ]
         );
 
@@ -199,7 +204,7 @@ class Database
     {
         $query = $this->_database->query(
             sprintf(
-                'SELECT * FROM `channelItem` ORDER BY `time` DESC LIMIT %d,%d',
+                'SELECT * FROM `channelItem` ORDER BY `pubTime` DESC, `time` DESC, `id` DESC LIMIT %d,%d',
                 $start,
                 $limit
             )
