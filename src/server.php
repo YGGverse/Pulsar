@@ -26,15 +26,15 @@ $database = new \Yggverse\Pulsar\Model\Database(
 // Start server
 switch ($environment->get('protocol'))
 {
-    case 'nps'|'NPS':
+    case 'nex':
 
         $server = \Ratchet\Server\IoServer::factory(
-            new \Yggverse\Pulsar\Controller\Server\Nps(
+            new \Yggverse\Pulsar\Controller\Server\Nex(
                 $config,
                 $database
             ),
-            $config->get()->server->nps->port,
-            $config->get()->server->nps->host
+            $config->get()->server->nex->port,
+            $config->get()->server->nex->host
         );
 
         $server->run();

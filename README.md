@@ -6,9 +6,9 @@ RSS aggregator for different protocols
 
 * [x] `src/crawler.php` - scan configured RSS feeds and dump results to SQLite ([alternative branch](https://github.com/YGGverse/Pulsar/tree/fs))
 * [ ] `src/cleaner.php` - auto clean deprecated records
-* [x] `src/server.php` - server launcher with multiple host support, based on [Ratchet](https://github.com/ratchetphp/Ratchet) asynchronous socket library
-  * [x] [NEX Protocol](https://nightfall.city/nps/info/specification.txt)
-  * [ ] [Gemini Protocol](https://geminiprotocol.net)
+* [x] `src/server.php` - server launcher for different protocols:
+  * [x] [NEX](https://nightfall.city/nex/info/specification.txt) - based on [Ratchet](https://github.com/ratchetphp/Ratchet) `IoServer` asynchronous socket library
+  * [ ] [Gemini](https://geminiprotocol.net)
 
 ## Example
 
@@ -29,7 +29,9 @@ RSS aggregator for different protocols
 
 ## Server
 
-* `php src/server.php protocol=NPS config=name.json` - launch `NPS` server configured by `name.json`
-  * `protocol` - supported options:
-    * `NPS`
+Launch as many servers as wanted by arguments
+
+* `php src/server.php protocol=nex config=name.json` - launch `nex` protocol server with `name.json` config
   * `config` - relative (to `config` folder) or absolute path to configuration file
+  * `protocol` - server protocol, supported options:
+    * `nex` - [NEX Protocol](https://nightfall.city/nex/info/specification.txt)

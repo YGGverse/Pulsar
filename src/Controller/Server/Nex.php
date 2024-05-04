@@ -4,7 +4,7 @@ namespace Yggverse\Pulsar\Controller\Server;
 
 use \Ratchet\MessageComponentInterface;
 
-class Nps implements MessageComponentInterface
+class Nex implements MessageComponentInterface
 {
     private object $_config;
 
@@ -15,7 +15,7 @@ class Nps implements MessageComponentInterface
         \Yggverse\Pulsar\Model\Database $database
     ) {
         // Init config
-        $this->_config = $config->get()->server->nps;
+        $this->_config = $config->get()->server->nex;
 
         // Init database
         $this->_database = $database;

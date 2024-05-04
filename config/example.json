@@ -7,7 +7,7 @@
     },
     "server":
     {
-        "nps":
+        "nex":
         {
             "host":"127.0.0.1",
             "port":1900,
@@ -18,7 +18,7 @@
                     "debug":
                     {
                         "enabled":true,
-                        "template":"[{time}] [init] NPS server at {host}:{port}"
+                        "template":"[{time}] [init] NEX protocol server at {host}:{port}"
                     }
                 },
                 "open":
