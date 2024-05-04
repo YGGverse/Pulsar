@@ -32,6 +32,6 @@ RSS aggregator for different protocols
 Launch as many servers as wanted, for different protocols and configurations (provided as the arguments)
 
 * `php src/server.php protocol=nex config=name.json` - launch `nex` protocol server with `name.json` config
-  * `config` - relative (to `config` folder) or absolute path to configuration file
+  * `config` - relative (`config` folder) or absolute path to configuration file
   * `protocol` - server protocol, supported options:
     * `nex` - [NEX Protocol](https://nightfall.city/nex/info/specification.txt)
