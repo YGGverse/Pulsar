@@ -72,6 +72,7 @@ foreach ($config->crawler->channel as $channel)
     {
         // Create new one if not exists
         $channelId = $database->addChannel(
+            $channel->alias,
             $channel->source,
             isset($remoteChannel->link) ? (string) $remoteChannel->link : null,
             isset($remoteChannel->title) ? (string) $remoteChannel->title : null,

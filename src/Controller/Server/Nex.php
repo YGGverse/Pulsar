@@ -123,8 +123,20 @@ class Nex implements MessageComponentInterface
                         $lines[] = sprintf(
                             '=> %s',
                             $channelItem->link
-                        ) . PHP_EOL;
+                        );
                     }
+                }
+
+                // Get channel info
+                if ($channel = $this->_database->getChannel($channelItem->channelId))
+                {
+                    $lines[] = sprintf(
+                        '=> /%s %s',
+                        urlencode(
+                            $channel->alias
+                        ),
+                        $channel->title
+                    );
                 }
 
                 // Build response
@@ -136,12 +148,12 @@ class Nex implements MessageComponentInterface
             break;
 
             // Chanel
-            case (bool) preg_match('/^\/(?<id>\d+)\/($|index\.gmi)$/i', $request, $attribute):
+            case (bool) preg_match('/^\/(?<alias>.+)$/i', $request, $attribute):
 
                 $lines = [];
 
                 // Get channel info
-                if ($channel = $this->_database->getChannel($attribute['id']))
+                if ($channel = $this->_database->getChannelByAlias($attribute['alias']))
                 {
                     if ($channel->title)
                     {
@@ -208,8 +220,10 @@ class Nex implements MessageComponentInterface
                 foreach ((array) $this->_database->getChannels() as $channel)
                 {
                     $lines[] = sprintf(
-                        '=> /%d/index.gmi %s',
-                        $channel->id,
+                        '=> /%s %s',
+                        urlencode(
+                            $channel->alias
+                        ),
                         $channel->title
                     );
                 }

@@ -16,17 +16,15 @@ class Database
         $this->_database = new \PDO(
             sprintf(
                 'sqlite:%s',
-                realpath(
-                    str_starts_with(
-                        $database,
-                        DIRECTORY_SEPARATOR
-                    ) ? $database
-                      : __DIR__ .
-                        DIRECTORY_SEPARATOR . '..'.
-                        DIRECTORY_SEPARATOR . '..'.
-                        DIRECTORY_SEPARATOR . 'config'.
-                        DIRECTORY_SEPARATOR . $database
-                )
+                str_starts_with(
+                    $database,
+                    DIRECTORY_SEPARATOR
+                ) ? $database
+                    : __DIR__ .
+                    DIRECTORY_SEPARATOR . '..'.
+                    DIRECTORY_SEPARATOR . '..'.
+                    DIRECTORY_SEPARATOR . 'config'.
+                    DIRECTORY_SEPARATOR . $database
             ),
             $username,
             $password
@@ -47,6 +45,7 @@ class Database
             (
                 "id"          INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                 "time"        INTEGER NOT NULL,
+                "alias"       VARCHAR NOT NULL,
                 "source"      TEXT NOT NULL,
                 "link"        TEXT,
                 "title"       TEXT,
@@ -102,6 +101,24 @@ class Database
         return null;
     }
 
+    public function getChannelByAlias(
+        string $alias
+    ): ?object
+    {
+        $query = $this->_database->prepare(
+            'SELECT * FROM `channel` WHERE `alias` LIKE ? LIMIT 1'
+        );
+
+        $query->execute([$alias]);
+
+        if ($result = $query->fetch())
+        {
+            return $result;
+        }
+
+        return null;
+    }
+
     public function getChannelIdBySource(
         string $source
     ): ?int
@@ -125,6 +142,7 @@ class Database
     }
 
     public function addChannel(
+        string $alias,
         string $source,
         ?string $link,
         ?string $title,
@@ -133,12 +151,13 @@ class Database
     ): ?int
     {
         $query = $this->_database->prepare(
-            'INSERT INTO `channel` (`source`, `link`, `title`, `description`, `time`)
-                            VALUES (:source,  :link,  :title,  :description,  :time)'
+            'INSERT INTO `channel` (`alias`, `source`, `link`, `title`, `description`, `time`)
+                            VALUES (:alias,  :source,  :link,  :title,  :description,  :time)'
         );
 
         $query->execute(
             [
+                ':alias'       => $alias,
                 ':source'      => $source,
                 ':link'        => $link,
                 ':title'       => $title,
