@@ -19,29 +19,15 @@ require_once __DIR__ .
 if (empty($argv[1])) throw new \Exception;
 
 // Init config
-$config = json_decode(
-    file_get_contents(
-        str_starts_with(
-            $argv[1],
-            DIRECTORY_SEPARATOR
-        ) ? $argv[1]  // absolute
-          : __DIR__ . // relative
-            DIRECTORY_SEPARATOR . '..'.
-            DIRECTORY_SEPARATOR . 'config'.
-            DIRECTORY_SEPARATOR . $argv[1]
-    )
-);  if (!$config) throw new \Exception;
+$config = new \Yggverse\Pulsar\Model\Config(
+    $argv[1]
+);
+
+$config = $config->get(); // registry only
 
 // Init database
 $database = new \Yggverse\Pulsar\Model\Database(
-    str_starts_with(
-        $config->database->location,
-        DIRECTORY_SEPARATOR
-    ) ? $config->database->location
-      : __DIR__ .
-        DIRECTORY_SEPARATOR . '..'.
-        DIRECTORY_SEPARATOR . 'config'.
-        DIRECTORY_SEPARATOR . $config->database->location,
+    $config->database->location,
     $config->database->username,
     $config->database->password
 );

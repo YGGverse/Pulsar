@@ -16,7 +16,17 @@ class Database
         $this->_database = new \PDO(
             sprintf(
                 'sqlite:%s',
-                $database
+                realpath(
+                    str_starts_with(
+                        $database,
+                        DIRECTORY_SEPARATOR
+                    ) ? $database
+                      : __DIR__ .
+                        DIRECTORY_SEPARATOR . '..'.
+                        DIRECTORY_SEPARATOR . '..'.
+                        DIRECTORY_SEPARATOR . 'config'.
+                        DIRECTORY_SEPARATOR . $database
+                )
             ),
             $username,
             $password
