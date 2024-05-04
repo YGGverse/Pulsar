@@ -1,6 +1,6 @@
 # Pulsar
 
-RSS Aggregator for [Gemini Protocol](https://geminiprotocol.net)
+RSS Aggregator
 
 ## Components
 
