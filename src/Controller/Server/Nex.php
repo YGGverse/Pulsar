@@ -167,36 +167,36 @@ class Nex implements MessageComponentInterface
                     {
                         $lines[] = $channel->description . PHP_EOL;
                     }
-                }
 
-                // Get channel items
-                foreach ((array) $this->_database->getChannelItems(0, 20) as $channelItem)
-                {
-                    $lines[] = sprintf(
-                        '=> /%d.gmi %s %s',
-                        $channelItem->id,
-                        $channelItem->pubTime ?
-                        date(
-                            'Y-m-d',
-                            $channelItem->pubTime
-                        ) : '',
-                        \Yggverse\Pulsar\Model\Filter::string(
-                            $channelItem->title
-                        )
-                    );
-
-                    if ($channelItem->description)
+                    // Get channel items
+                    foreach ((array) $this->_database->getChannelItems($channel->id, 0, 20) as $channelItem)
                     {
-                        $lines[] = \Yggverse\Pulsar\Model\Filter::text(
-                            $channelItem->description
-                        ) . PHP_EOL;
-                    }
+                        $lines[] = sprintf(
+                            '=> /%d.gmi %s %s',
+                            $channelItem->id,
+                            $channelItem->pubTime ?
+                            date(
+                                'Y-m-d',
+                                $channelItem->pubTime
+                            ) : '',
+                            \Yggverse\Pulsar\Model\Filter::string(
+                                $channelItem->title
+                            )
+                        );
 
-                    if ($channelItem->content)
-                    {
-                        $lines[] = \Yggverse\Pulsar\Model\Filter::text(
-                            $channelItem->content
-                        ) . PHP_EOL;
+                        if ($channelItem->description)
+                        {
+                            $lines[] = \Yggverse\Pulsar\Model\Filter::text(
+                                $channelItem->description
+                            ) . PHP_EOL;
+                        }
+
+                        if ($channelItem->content)
+                        {
+                            $lines[] = \Yggverse\Pulsar\Model\Filter::text(
+                                $channelItem->content
+                            ) . PHP_EOL;
+                        }
                     }
                 }
 

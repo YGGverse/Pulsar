@@ -198,13 +198,15 @@ class Database
     }
 
     public function getChannelItems(
+        int $channelId,
         int $start = 0,
         int $limit = 20
     ): ?array
     {
         $query = $this->_database->query(
             sprintf(
-                'SELECT * FROM `channelItem` ORDER BY `pubTime` DESC, `time` DESC, `id` DESC LIMIT %d,%d',
+                'SELECT * FROM `channelItem` WHERE `channelId` = %d ORDER BY `pubTime` DESC, `time` DESC, `id` DESC LIMIT %d,%d',
+                $channelId,
                 $start,
                 $limit
             )
