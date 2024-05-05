@@ -133,8 +133,12 @@ class Nex implements MessageComponentInterface
                 if ($channelItem->link)
                 {
                     $lines[] = sprintf(
-                        '=> %s',
-                        $channelItem->link
+                        '=> %s %s',
+                        $channelItem->link,
+                        parse_url(
+                            $channelItem->link,
+                            PHP_URL_HOST
+                        )
                     );
                 }
 
