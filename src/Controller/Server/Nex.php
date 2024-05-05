@@ -172,6 +172,15 @@ class Nex implements MessageComponentInterface
                     foreach ((array) $this->_database->getChannelItems($channel->id, 0, 20) as $channelItem)
                     {
                         $lines[] = sprintf(
+                            '=> /%d.gmi %s',
+                            $channelItem->id,
+                            \Yggverse\Pulsar\Model\Filter::string(
+                                $channelItem->title
+                            )
+                        );
+
+                        /* @TODO make gemfeed date optional
+                        $lines[] = sprintf(
                             '=> /%d.gmi %s %s',
                             $channelItem->id,
                             $channelItem->pubTime ?
@@ -183,6 +192,7 @@ class Nex implements MessageComponentInterface
                                 $channelItem->title
                             )
                         );
+                        */
 
                         if ($channelItem->description)
                         {
