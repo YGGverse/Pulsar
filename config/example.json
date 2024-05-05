@@ -91,7 +91,8 @@
                         "enabled":true,
                         "required":false
                     },
-                    "content":{
+                    "content":
+                    {
                         "enabled":false,
                         "required":false
                     }
@@ -124,7 +125,8 @@
                         "enabled":true,
                         "required":false
                     },
-                    "content":{
+                    "content":
+                    {
                         "enabled":false,
                         "required":false
                     }
