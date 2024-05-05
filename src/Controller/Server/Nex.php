@@ -79,7 +79,7 @@ class Nex implements MessageComponentInterface
         switch (true)
         {
             // Item
-            case (bool) preg_match('/^\/(?<id>\d+)($|\.gmi)$/i', $request, $attribute):
+            case (bool) preg_match('/\/(?<id>\d+)($|\.gmi)$/i', $request, $attribute):
 
                 $lines = [];
 
@@ -172,27 +172,12 @@ class Nex implements MessageComponentInterface
                     foreach ((array) $this->_database->getChannelItems($channel->id, 0, 20) as $channelItem)
                     {
                         $lines[] = sprintf(
-                            '=> /%d.gmi %s',
+                            '=> %d.gmi %s',
                             $channelItem->id,
                             \Yggverse\Pulsar\Model\Filter::string(
                                 $channelItem->title
                             )
                         );
-
-                        /* @TODO make gemfeed date optional
-                        $lines[] = sprintf(
-                            '=> /%d.gmi %s %s',
-                            $channelItem->id,
-                            $channelItem->pubTime ?
-                            date(
-                                'Y-m-d',
-                                $channelItem->pubTime
-                            ) : '',
-                            \Yggverse\Pulsar\Model\Filter::string(
-                                $channelItem->title
-                            )
-                        );
-                        */
 
                         if ($channelItem->description)
                         {
