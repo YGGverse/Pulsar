@@ -78,6 +78,15 @@ class Nex implements MessageComponentInterface
         // Route request
         switch (true)
         {
+            // Try static route settings
+            case isset($this->_config->route->{$request}):
+
+                $response = file_get_contents(
+                    $this->_config->route->{$request}
+                );
+
+            break;
+
             // Chanel item
             case (bool) preg_match('/\/(?<id>\d+)($|\.gmi)$/i', $request, $attribute):
 
@@ -207,35 +216,24 @@ class Nex implements MessageComponentInterface
             // Not found
             default:
 
-                // Try static route settings
-                if (isset($this->_config->route->{$request}))
+                // Create site map
+                $lines = [];
+
+                // Get channels
+                foreach ((array) $this->_database->getChannels() as $channel)
                 {
-                    $response = file_get_contents(
-                        $this->_config->route->{$request}
+                    $lines[] = sprintf(
+                        '=> /%s %s',
+                        $channel->alias,
+                        $channel->title
                     );
                 }
 
-                // Build site map
-                else
-                {
-                    $lines = [];
-
-                    // Get channels
-                    foreach ((array) $this->_database->getChannels() as $channel)
-                    {
-                        $lines[] = sprintf(
-                            '=> /%s %s',
-                            $channel->alias,
-                            $channel->title
-                        );
-                    }
-
-                    // Build response
-                    $response = implode(
-                        PHP_EOL,
-                        $lines
-                    );
-                }
+                // Build response
+                $response = implode(
+                    PHP_EOL,
+                    $lines
+                );
         }
 
         // Debug message event on enabled
