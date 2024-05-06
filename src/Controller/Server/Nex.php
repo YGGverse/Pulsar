@@ -72,7 +72,12 @@ class Nex implements MessageComponentInterface
     ) {
         // Format request
         $request = '/' . ltrim(
-            trim($request), '/'
+            trim(
+                filter_var(
+                    $request,
+                    FILTER_SANITIZE_URL
+                )
+            ), '/'
         );
 
         // Route request
