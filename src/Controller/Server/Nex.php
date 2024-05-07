@@ -112,7 +112,7 @@ class Nex implements MessageComponentInterface
                         \Yggverse\Pulsar\Model\Filter::string(
                             $channelItem->title
                         )
-                    );
+                    ) . PHP_EOL;
                 }
 
                 if ($channelItem->pubTime)
@@ -185,7 +185,7 @@ class Nex implements MessageComponentInterface
                         \Yggverse\Pulsar\Model\Filter::string(
                             $channel->title
                         )
-                    );
+                    ) . PHP_EOL;
                 }
 
                 if ($channel->description)
@@ -202,7 +202,7 @@ class Nex implements MessageComponentInterface
                         \Yggverse\Pulsar\Model\Filter::string(
                             $channelItem->title
                         )
-                    );
+                    ) . PHP_EOL;
 
                     if ($channelItem->description)
                     {
